@@ -1,2 +1,1 @@
-# sample-golang-grpc-client
-Test on sample-golang-grpc-microservice
+# sample-golang-grpc-microservice
