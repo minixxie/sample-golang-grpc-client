@@ -1,0 +1,17 @@
+version: '2'
+services:
+  ldev-sample-golang-grpc-client:
+    build: .
+    image: ldev-sample-golang-grpc-client:1.0
+    container_name: ldev-sample-golang-grpc-client
+    hostname: ldev-sample-golang-grpc-client
+    #entrypoint: sleep 3h
+    #command: sleep 3h
+    networks:
+      - ldev-backend
+    environment:
+      - ENV=ldev
+networks:
+  ldev-backend:
+    external:
+      name: ldev-backend

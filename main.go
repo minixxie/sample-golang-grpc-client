@@ -1,20 +1,24 @@
 package main
 
-import (
-	"log"
-
-	"golang.org/x/net/context"
-	"google.golang.org/grpc"
-	pb "pb"
-)
+import "log"
+import "os"
+import "golang.org/x/net/context"
+import "google.golang.org/grpc"
+import pb "pb"
 
 const (
-	address     = "172.17.0.1:8080"
+	ldevAddress    = "ldev-sample-golang-grpc-microservice:80"
+	devAddress    = "dev-sample-golang-grpc-microservice:80"
 	defaultName = "world"
 )
 
 func main() {
 	// Set up a connection to the server.
+    address := ldevAddress
+    if os.Getenv("ENV") == "dev" {
+        address = devAddress
+    }
+
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)

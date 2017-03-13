@@ -1,0 +1,16 @@
+version: '2'
+services:
+  dev-sample-golang-grpc-client:
+    build: .
+    image: dev-sample-golang-grpc-client:1.0
+    container_name: dev-sample-golang-grpc-client
+    hostname: dev-sample-golang-grpc-client
+    #entrypoint: sleep 3h
+    networks:
+      - dev-backend
+    environment:
+      - ENV=dev
+networks:
+  dev-backend:
+    external:
+      name: dev-backend
